@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&C STANDARDS | Portal de Conexión</title>
+    
+    <meta name="description" content="Portal oficial de enlaces y tarjetas digitales de D&C Standards. Ingeniería y fabricación petrolera.">
+    <link rel="icon" type="image/png" href="../static/Icono.ico">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --tedrix-blue: #00A3FF;
+            --whatsapp: #25D366;
+            --mid-gray: #A0A0A0;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            padding: 2rem 5vw;
+        }
+
+        /* --- FONDO MÁS VISIBLE Y NÍTIDO --- */
+        .background-container {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+        .background-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Aquí está la magia: Menos oscuridad (0.45) y casi nada de desenfoque (3px) */
+            filter: brightness(0.45) contrast(1.1) blur(3px);
+            transform: scale(1.05); 
+        }
+        .bg-gradient {
+            position: absolute;
+            inset: 0;
+            /* El degradado ahora es más sutil, solo oscurece los bordes de la pantalla */
+            background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+        }
+
+        /* --- DASHBOARD VIP --- */
+        .linktree-container {
+            width: 100%;
+            max-width: 500px;
+            /* Subí un poquito la oscuridad del cristal (0.65) para que el texto no se pierda con el nuevo fondo claro */
+            background: rgba(12, 12, 12, 0.65);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: dashboardReveal 1s var(--ease-out-expo) forwards;
+        }
+
+        @keyframes dashboardReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- PERFIL / LOGO --- */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            width: 100%;
+        }
+        .profile-logo {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+        }
+        
+        .profile-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .profile-desc {
+            color: var(--mid-gray);
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            max-width: 90%;
+            line-height: 1.5;
+        }
+
+        /* --- BOTONES DE ENLACES --- */
+        .links-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .link-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            overflow: hidden;
+            transition: all 0.4s var(--ease-out-expo);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: revealUp 0.8s var(--ease-out-expo) forwards;
+        }
+        
+        /* Retrasos en cascada para la animación */
+        .link-btn:nth-child(1) { animation-delay: 0.2s; }
+        .link-btn:nth-child(2) { animation-delay: 0.3s; }
+        .link-btn:nth-child(3) { animation-delay: 0.4s; }
+        .link-btn:nth-child(4) { animation-delay: 0.5s; }
+        .link-btn:nth-child(5) { animation-delay: 0.6s; }
+
+        @keyframes revealUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .link-btn i {
+            position: absolute;
+            left: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--mid-gray);
+            transition: color 0.4s;
+        }
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4), 0 0 15px rgba(255,255,255,0.05);
+        }
+        .link-btn:hover i {
+            color: var(--white);
+        }
+
+        /* Botón destacado (WhatsApp) */
+        .link-btn.highlight {
+            background: rgba(37, 211, 102, 0.1);
+            border-color: rgba(37, 211, 102, 0.3);
+            color: var(--whatsapp);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.15);
+        }
+        .link-btn.highlight i {
+            color: var(--whatsapp);
+        }
+        .link-btn.highlight:hover {
+            background: var(--whatsapp);
+            color: var(--black);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3), 0 0 30px rgba(37, 211, 102, 0.5);
+        }
+        .link-btn.highlight:hover i {
+            color: var(--black);
+        }
+
+        /* --- REDES SOCIALES INFERIORES --- */
+        .social-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            opacity: 0;
+            animation: revealUp 0.8s var(--ease-out-expo) forwards;
+            animation-delay: 0.7s;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        .social-icon:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.2);
+        }
+
+        /* --- FOOTER --- */
+        .tree-footer {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            opacity: 0;
+            animation: revealUp 0.8s var(--ease-out-expo) forwards;
+            animation-delay: 0.9s;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+        .tree-footer a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .tree-footer a:hover {
+            color: var(--tedrix-blue);
+        }
+
+        /* Responsividad para móviles muy pequeños */
+        @media (max-width: 480px) {
+            .linktree-container { padding: 2.5rem 1.5rem; border-radius: 20px; }
+            .profile-logo { width: 90px; height: 90px; }
+            .profile-title { font-size: 1.4rem; }
+            .link-btn { padding: 1.1rem 1.5rem; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-container">
+        <img src="../static/Hero.png" alt="Fondo Industrial">
+        <div class="bg-gradient"></div>
+    </div>
+
+    <div class="linktree-container">
+        
+        <div class="profile-section">
+            <img src="../static/Logo Blanco.png" alt="D&C Standards Logo" class="profile-logo">
+            <h1 class="profile-title">D&C STANDARDS</h1>
+            <p class="profile-desc">Ingeniería, Fabricación y Mantenimiento Petrolero</p>
+        </div>
+
+        <div class="links-wrapper">
+            
+            <a href="../index.html" class="link-btn">
+                <i class="fa-solid fa-globe"></i>
+                Sitio Web Oficial
+            </a>
+
+            <a href="../templates/tarjetas.html" class="link-btn">
+                <i class="fa-regular fa-id-card"></i>
+                Tarjetas Digitales
+            </a>
+
+            <a href="../index.html#catalogo" class="link-btn">
+                <i class="fa-solid fa-layer-group"></i>
+                Catálogo </a>
+
+            <a href="../index.html#servicios" class="link-btn">
+                <i class="fa-solid fa-helmet-safety"></i>
+                Nuestros Servicios
+            </a>
+
+            <a href="../https://wa.link/skadew" target="_blank" rel="noopener noreferrer" class="link-btn highlight">
+                <i class="fa-brands fa-whatsapp"></i>
+                Contacto
+            </a>
+
+        </div>
+
+        <div class="social-row">
+            <a href="https://www.instagram.com/dc_standards_/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="mailto:info@dcstandards.com" class="social-icon"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+
+    </div>
+
+    <footer class="tree-footer">
+        <p>&copy; 2026 D&C STANDARDS. Todos los derechos reservados.</p>
+        <p>Desarrollado por <a href="https://tedrix.co/" target="_blank">Tedrix</a></p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Terms of Service | D&C STANDARDS</title>
+    
+    <meta name="description" content="Terms of service and operational regulations of D&C Standards.">
+    <link rel="icon" type="image/png" href="../../static/Logo Blanco.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #030303;
+            --card-metal: linear-gradient(135deg, #1f1f1f 0%, #0d0d0d 100%);
+            --white: #FFFFFF;
+            --oil-gold: #E5A93C; 
+            --mid-gray: #888888;
+            --border-alpha: rgba(255, 255, 255, 0.08);
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            -webkit-font-smoothing: antialiased;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+        }
+
+        .background-wrapper {
+            position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%;
+        }
+        .background-wrapper img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.15) contrast(1.2); 
+        }
+        .vignette {
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at center, rgba(229, 169, 60, 0.05) 0%, rgba(0,0,0,0.95) 80%);
+        }
+
+        .legal-box {
+            width: 100%;
+            max-width: 650px;
+            background: var(--card-metal);
+            border: 1px solid var(--border-alpha);
+            border-radius: 24px;
+            padding: clamp(1.5rem, 5vw, 3rem);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9), inset 0 1px 2px rgba(255,255,255,0.1);
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .legal-box::before {
+            content: ''; position: absolute; top: 0; left: 10%; width: 80%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--oil-gold), transparent);
+        }
+
+        .wireframe-rig {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; color: var(--oil-gold); opacity: 0.03; z-index: 1; pointer-events: none;
+        }
+
+        .legal-header {
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .company-tag {
+            font-size: 0.75rem; font-weight: 800; letter-spacing: 3px; color: var(--oil-gold); text-transform: uppercase;
+            display: block; margin-bottom: 0.5rem;
+        }
+        .legal-header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem); font-weight: 900; letter-spacing: 1px; text-transform: uppercase;
+        }
+        .update-text {
+            font-size: 0.75rem; color: var(--mid-gray); margin-top: 0.5rem; display: block;
+        }
+
+        .legal-body {
+            display: flex;
+            flex-direction: column;
+            gap: 2.2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .legal-section h2 {
+            font-size: 1.15rem; font-weight: 800; color: var(--oil-gold);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .legal-section h2 i { font-size: 0.9rem; opacity: 0.8; }
+        
+        .legal-section p {
+            font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); line-height: 1.6; font-weight: 300;
+        }
+        .legal-section strong { color: var(--white); font-weight: 600; }
+
+        .legal-section ul {
+            list-style: none; margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0.8rem;
+        }
+        .legal-section ul li {
+            font-size: 0.88rem; color: rgba(255, 255, 255, 0.7); line-height: 1.5;
+            padding-left: 1.5rem; position: relative; font-weight: 300;
+        }
+        .legal-section ul li::before {
+            content: '//'; position: absolute; left: 0; color: var(--oil-gold); font-weight: 700; font-size: 0.8rem;
+        }
+
+        .normative-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem; border-radius: 8px; margin-top: 0.8rem;
+            font-size: 0.85rem; color: var(--mid-gray); line-height: 1.5;
+        }
+        .normative-box strong { color: var(--oil-gold); }
+
+        .back-link-container {
+            margin-top: 3rem; text-align: center; width: 100%; z-index: 2;
+        }
+        .back-link {
+            color: var(--mid-gray); text-decoration: none; font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .back-link:hover { color: var(--oil-gold); }
+
+        @media (max-width: 480px) {
+            body { padding: 1.5rem 0.8rem; }
+            .legal-box { padding: 1.8rem 1.2rem; border-radius: 16px; }
+            .legal-section h2 { font-size: 1.05rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-wrapper">
+        <img src="../../static/Hero.png" alt="Industrial Metalwork Background">
+        <div class="vignette"></div>
+    </div>
+
+    <div class="lang-switch" style="position: absolute; top: 2rem; right: 2rem; z-index: 100; font-family: sans-serif; font-size: 0.85rem; letter-spacing: 1px;">
+        <a href="#" style="color: var(--mid-gray); text-decoration: none;">ES</a>
+        <span style="color: rgba(255,255,255,0.2); margin: 0 5px;">/</span>
+        <span style="color: var(--white); font-weight: 700;">EN</span>
+    </div>
+
+    <main class="legal-box">
+        
+        <svg viewBox="0 0 300 450" class="wireframe-rig">
+            <g stroke="currentColor" fill="none">
+                <ellipse cx="150" cy="400" rx="90" ry="25" stroke-width="1" opacity="0.3"/>
+                <path d="M 110 330 L 135 60 M 190 330 L 165 60" stroke-width="2"/>
+                <path d="M 113 300 L 187 270 M 187 300 L 113 270" stroke-width="0.8" opacity="0.6"/>
+                <path d="M 116 270 L 184 240 M 184 270 L 116 240" stroke-width="0.8" opacity="0.6"/>
+                <line x1="150" y1="60" x2="150" y2="400" stroke-width="1.5"/>
+            </g>
+        </svg>
+
+        <header class="legal-header">
+            <span class="company-tag">D&C Standards | Legal Department</span>
+            <h1>Terms of Service</h1>
+            <span class="update-text"><i class="fa-regular fa-calendar"></i> Technical Assessment Update: May 2026</span>
+        </header>
+
+        <div class="legal-body">
+            
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-shield-halved"></i> 1. Introduction & Acceptance</h2>
+                <p>Welcome to <strong>D&C Standards</strong>. By accessing, browsing, or utilizing this website portal, as well as requesting our specialized structural engineering, advanced drafting design, or heavy metalworking manufacturing operations, you bound compliance and accept to be fully governed under the terms set forth herein. If you disagree with any segment of these clauses, you must immediately cease any platform utilization.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-gears"></i> 2. Industrial Services & Procurement Estimates</h2>
+                <p>Our infrastructure displays heavy workshop execution capabilities alongside an active assets matrix licensed under strict compliance with energy global normatives:</p>
+                <div class="normative-box">
+                    Heavy load asset structures engineered and audited under: <strong>API 4F, API Q1, ASME, and AISC</strong> codes.
+                </div>
+                <ul>
+                    <li>All datasheets, volumetric rendering, structural blueprints, and 3D modeling blocks displayed on this site are solely for general illustrative and preliminary informational purposes.</li>
+                    <li>No incoming inquiries or request entries via our automated WhatsApp desk or mailbox relays constitute a binding legal contract until a verified industrial Purchase Order (PO) or manufacturing agreement is countersigned by an authorized corporate representative.</li>
+                    <li>Project lead times, asset safety factors, and specific structural weight margins are certified on a single project base analysis by our Quality Control (QC) department.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-copyright"></i> 3. Intellectual Property</h2>
+                <p>All structural vector engineering layouts, code execution blocks, high-fidelity 3D assets, plant operations footage, calculation memory logs, and trademark logs displayed within this system are the exclusive asset property of <strong>D&C Standards</strong> and are protected under copyright treaties. Any modification, cloning, or industrial layout distribution without express written consent from a company board representative is legally actionable.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-triangle-exclamation"></i> 4. Limitation of Liability</h2>
+                <p>While D&C Standards deploys structural filters to maintain portal data accuracy, the corporation declines any legal liability regarding blueprint misinterpretation, operational downtime costs, or drilling equipment collateral damages resulting from data use without a preliminary direct physical validation signed and stamped by our certified engineering department board.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-gavel"></i> 5. Governing Law & Jurisdiction</h2>
+                <p>These terms are governed, executed, and interpreted under the strict legal framework of the Republic of Colombia. Any litigation arising from using this platform will be bound exclusively to the competent courts of <strong>Madrid (Cundinamarca) or Bogota D.C., Colombia</strong>.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-pen-to-square"></i> 6. Modifications</h2>
+                <p>The company reserves the right to amend or update this document at its sole discretion without previous notification. Ongoing utilization after an edit constitutes an automatic acceptance of the current data terms.</p>
+            </section>
+
+        </div>
+
+        <div class="back-link-container">
+            <a href="../translate/enIndex.html" class="back-link">
+                <i class="fa-solid fa-arrow-left-long"></i> Return to Main Platform
+            </a>
+        </div>
+
+    </main>
+
+    <script src="../../js/lang-switch.js"></script>
+</body>
+</html>

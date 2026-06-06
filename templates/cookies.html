@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Política de Cookies | D&C STANDARDS</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Política de uso de tecnologías de seguimiento y cookies de D&C Standards.">
+    <link rel="icon" type="image/png" href="../static/Logo Blanco.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #030303;
+            --card-metal: linear-gradient(135deg, #1f1f1f 0%, #0d0d0d 100%);
+            --white: #FFFFFF;
+            --oil-gold: #E5A93C; 
+            --mid-gray: #888888;
+            --border-alpha: rgba(255, 255, 255, 0.08);
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            -webkit-font-smoothing: antialiased;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+        }
+
+        /* --- FONDO INDUSTRIAL UNIFICADO --- */
+        .background-wrapper {
+            position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%;
+        }
+        .background-wrapper img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.15) contrast(1.2); 
+        }
+        .vignette {
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at center, rgba(229, 169, 60, 0.05) 0%, rgba(0,0,0,0.95) 80%);
+        }
+
+        /* --- CONTENEDOR PRINCIPAL TIPO PANEL MATE --- */
+        .legal-box {
+            width: 100%;
+            max-width: 650px;
+            background: var(--card-metal);
+            border: 1px solid var(--border-alpha);
+            border-radius: 24px;
+            padding: clamp(1.5rem, 5vw, 3rem);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9), inset 0 1px 2px rgba(255,255,255,0.1);
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .legal-box::before {
+            content: ''; position: absolute; top: 0; left: 10%; width: 80%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--oil-gold), transparent);
+        }
+
+        /* --- TORRE PETROLERA SVG DE FONDO --- */
+        .wireframe-rig {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; color: var(--oil-gold); opacity: 0.03; z-index: 1; pointer-events: none;
+        }
+
+        /* --- ENCABEZADO --- */
+        .legal-header {
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .company-tag {
+            font-size: 0.75rem; font-weight: 800; letter-spacing: 3px; color: var(--oil-gold); text-transform: uppercase;
+            display: block; margin-bottom: 0.5rem;
+        }
+        .legal-header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem); font-weight: 900; letter-spacing: 1px; text-transform: uppercase;
+        }
+        .update-text {
+            font-size: 0.75rem; color: var(--mid-gray); margin-top: 0.5rem; display: block;
+        }
+
+        /* --- TEXTO LEGAL --- */
+        .legal-body {
+            display: flex;
+            flex-direction: column;
+            gap: 2.2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .legal-section h2 {
+            font-size: 1.15rem; font-weight: 800; color: var(--oil-gold);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .legal-section h3 {
+            font-size: 0.95rem; font-weight: 700; color: var(--white);
+            text-transform: uppercase; letter-spacing: 0.5px; margin: 1rem 0 0.5rem 0;
+        }
+        .legal-section h2 i { font-size: 0.9rem; opacity: 0.8; }
+        
+        .legal-section p {
+            font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); line-height: 1.6; font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+        .legal-section strong { color: var(--white); font-weight: 600; }
+
+        /* Listas técnicas */
+        .legal-section ul {
+            list-style: none; margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0.8rem;
+        }
+        .legal-section ul li {
+            font-size: 0.88rem; color: rgba(255, 255, 255, 0.7); line-height: 1.5;
+            padding-left: 1.5rem; position: relative; font-weight: 300;
+        }
+        .legal-section ul li::before {
+            content: '//'; position: absolute; left: 0; color: var(--oil-gold); font-weight: 700; font-size: 0.8rem;
+        }
+
+        /* --- LINK DE RETORNO LIMPIO --- */
+        .back-link-container {
+            margin-top: 3rem; text-align: center; width: 100%; z-index: 2;
+        }
+        .back-link {
+            color: var(--mid-gray); text-decoration: none; font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .back-link:hover { color: var(--oil-gold); }
+
+        /* Ajustes móviles */
+        @media (max-width: 480px) {
+            body { padding: 1.5rem 0.8rem; }
+            .legal-box { padding: 1.8rem 1.2rem; border-radius: 16px; }
+            .legal-section h2 { font-size: 1.05rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fondo Nítido Profundo -->
+    <div class="background-wrapper">
+        <img src="static/Hero.png" alt="Fondo D&C Standards">
+        <div class="vignette"></div>
+    </div>
+
+    <!-- Contenedor Legal Premium -->
+    <main class="legal-box">
+        
+        <!-- Torre petrolera vectorial sutil en el fondo -->
+        <svg viewBox="0 0 300 450" class="wireframe-rig">
+            <g stroke="currentColor" fill="none">
+                <ellipse cx="150" cy="400" rx="90" ry="25" stroke-width="1" opacity="0.3"/>
+                <path d="M 110 330 L 135 60 M 190 330 L 165 60" stroke-width="2"/>
+                <path d="M 113 300 L 187 270 M 187 300 L 113 270" stroke-width="0.8" opacity="0.6"/>
+                <path d="M 116 270 L 184 240 M 184 270 L 116 240" stroke-width="0.8" opacity="0.6"/>
+                <line x1="150" y1="60" x2="150" y2="400" stroke-width="1.5"/>
+            </g>
+        </svg>
+
+        <!-- Cabecera -->
+        <header class="legal-header">
+            <span class="company-tag">D&C Standards | Technical Operations</span>
+            <h1>Política de Cookies</h1>
+            <span class="update-text"><i class="fa-regular fa-calendar"></i> Última actualización técnica: Mayo 2026</span>
+        </header>
+
+        <!-- Cuerpo del Documento -->
+        <div class="legal-body">
+            
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-cookie"></i> 1. ¿Qué es una Cookie?</h2>
+                <p>Una cookie es un pequeño archivo de texto que un sitio web almacena en su navegador o dispositivo móvil cuando usted lo visita. Las cookies permiten que la plataforma recuerde sus acciones, preferencias de idioma y configuraciones técnicas para que usted no tenga que configurarlas de nuevo en visitas posteriores, garantizando una navegación fluida y de alto rendimiento.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-layer-group"></i> 2. Tipos de Cookies que Utilizamos</h2>
+                <p>En el sitio web de <strong>D&C Standards</strong> implementamos tecnologías estrictamente controladas para asegurar el correcto despliegue visual de nuestra infraestructura digital. Las clasificamos en:</p>
+                
+                <h3>Cookies Técnicas y Esenciales</h3>
+                <p>Son aquellas indispensables para permitirle navegar por el sitio y utilizar sus funciones integradas. Sin estas cookies, elementos interactivos de la interfaz de usuario como el controlador de audio de los reproductores de video industrial, las animaciones fluidas al hacer scroll y los efectos de iluminación dinámica de las tarjetas de catálogo técnico no funcionarían correctamente.</p>
+
+                <h3>Cookies de Rendimiento y Análisis</h3>
+                <p>Utilizamos herramientas sutiles de analítica (por ejemplo, contadores y métricas agregadas) que nos permiten evaluar el tráfico del sitio de forma anónima. Esto nos ayuda a entender qué partes del catálogo de proyectos o qué capacidades operativas de la planta capturan mayor interés empresarial para seguir optimizando la velocidad de respuesta de nuestros servidores.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-network-wired"></i> 3. Cookies de Terceros</h2>
+                <p>En algunas secciones de nuestro sitio web enlazamos a plataformas externas para potenciar la comunicación directa con el cliente. Al interactuar con el botón flotante de <strong>WhatsApp Comercial</strong> o al redirigirse a nuestro portal institucional en <strong>LinkedIn</strong>, esas plataformas externas pueden inyectar sus cookies de seguimiento técnico de acuerdo con sus políticas independientes de privacidad.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-sliders"></i> 4. Control y Desactivación</h2>
+                <p>Usted puede controlar, bloquear o eliminar las cookies instaladas en su equipo en cualquier momento configurando las opciones del navegador que está utilizando. Tenga en cuenta que si decide desactivar por completo las cookies esenciales de este sitio web, es muy probable que la experiencia visual de la interfaz se vea afectada y algunas herramientas de interacción dejen de reaccionar de inmediato.</p>
+                <ul>
+                    <li>Para Google Chrome: Configuración &gt; Privacidad y seguridad &gt; Cookies de terceros.</li>
+                    <li>Para Brave Browser: Escudos &gt; Bloqueo de rastreadores y cookies.</li>
+                    <li>Para Mozilla Firefox: Ajustes &gt; Privacidad & seguridad &gt; Cookies y datos del sitio.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-arrow-rotate-left"></i> 5. Actualizaciones de esta Política</h2>
+                <p>D&C Standards se reserva el derecho de modificar esta Política de Cookies para adaptarla a nuevos requerimientos técnicos de la plataforma o actualizaciones de la legislación vigente. Cualquier cambio sustancial será publicado con su respectiva fecha de actualización en la cabecera de este documento.</p>
+            </section>
+
+        </div>
+
+        <!-- Enlace de regreso limpio al pie (Sin botón amarillo feo) -->
+        <div class="back-link-container">
+            <a href="../index.html" class="back-link">
+                <i class="fa-solid fa-arrow-left-long"></i> Volver al Inicio
+            </a>
+        </div>
+
+    </main>
+
+</body>
+</html>

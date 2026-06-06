@@ -1,0 +1,354 @@
+/**
+ * DC STANDARDS - Ecosistema Legal CSS Premium
+ * Enfoque: Diseño Industrial, Alta Legibilidad, Cyber-Premium
+ */
+
+:root {
+    --bg-dark: #030303;
+    --card-metal: linear-gradient(135deg, #1f1f1f 0%, #0d0d0d 100%);
+    --white: #FFFFFF;
+    --oil-gold: #E5A93C;
+    --mid-gray: #888888;
+    --border-alpha: rgba(255, 255, 255, 0.08);
+    --gold-glow: rgba(229, 169, 60, 0.15);
+    --font-inter: 'Inter', sans-serif;
+    --font-rajdhani: 'Rajdhani', sans-serif;
+}
+
+/* --- CABECERA LEGAL PREMIUM --- */
+.legal-header {
+    padding: 7rem 0 4rem 0;
+    border-bottom: 1px solid var(--border-alpha);
+    background: radial-gradient(circle at 80% 20%, rgba(229, 169, 60, 0.04) 0%, transparent 50%);
+    position: relative;
+}
+
+.legal-header h1 {
+    font-family: var(--font-rajdhani);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 1rem 0 0.5rem 0;
+    color: var(--white);
+}
+
+.legal-header p {
+    font-family: var(--font-inter);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--mid-gray);
+    max-width: 700px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.update-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+    font-family: var(--font-rajdhani);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--oil-gold);
+}
+
+/* --- DISTRIBUCIÓN DEL CUERPO (LAYOUT MAESTRO) --- */
+.legal-content-section {
+    background-color: #050505;
+    padding: 4rem 0 6rem 0;
+}
+
+.legal-layout-wrapper {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+/* --- SIDEBAR DE NAVEGACIÓN --- */
+.legal-sidebar {
+    width: 280px;
+    position: sticky;
+    top: 100px; /* Separación de la barra de navegación superior */
+    flex-shrink: 0;
+}
+
+@media (max-width: 992px) {
+    .legal-sidebar { display: none; } /* Oculto en tablets y celulares para priorizar el documento */
+}
+
+.sidebar-sticky-box h4 {
+    font-family: var(--font-rajdhani);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--mid-gray);
+    margin-bottom: 1.5rem;
+    border-left: 2px solid var(--oil-gold);
+    padding-left: 10px;
+}
+
+.sidebar-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidebar-link-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.8rem 1rem;
+    color: var(--mid-gray);
+    text-decoration: none;
+    font-family: var(--font-inter);
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    border: 1px solid transparent;
+}
+
+.sidebar-link-item .num {
+    font-family: var(--font-rajdhani);
+    font-weight: 600;
+    color: rgba(255,255,255,0.2);
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.sidebar-link-item:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.02);
+}
+
+.sidebar-link-item.active {
+    color: var(--oil-gold);
+    background: rgba(229, 169, 60, 0.05);
+    border-color: rgba(229, 169, 60, 0.15);
+    font-weight: 500;
+}
+
+.sidebar-link-item.active .num {
+    color: var(--oil-gold);
+}
+
+/* --- BLOQUE DEL DOCUMENTO LEGAL --- */
+.legal-document {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.legal-block {
+    scroll-margin-top: 120px; /* Margen de frenado en el scroll interactivo */
+}
+
+.legal-block h2 h2 {
+    font-family: var(--font-rajdhani);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Decoración técnica en los títulos */
+.legal-block h2 h2::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 40px;
+    height: 1.5px;
+    background-color: var(--oil-gold);
+}
+
+.legal-block p {
+    font-family: var(--font-inter);
+    font-size: 0.98rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+}
+
+.legal-block strong {
+    color: var(--white);
+    font-weight: 500;
+}
+
+/* --- COMPONENTES ADICIONALES (UI INDUSTRIAL) --- */
+
+/* Fichas de Normativas API/ASME */
+.normative-badge-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+}
+
+.norm-card {
+    font-family: var(--font-rajdhani);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--oil-gold);
+    background: rgba(229, 169, 60, 0.05);
+    border: 1px solid rgba(229, 169, 60, 0.2);
+    padding: 6px 16px;
+    border-radius: 4px;
+}
+
+/* Alerta Informativa Táctica */
+.alert-info-box {
+    display: flex;
+    gap: 15px;
+    background: rgba(229, 169, 60, 0.03);
+    border-left: 3px solid var(--oil-gold);
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.8rem 0;
+}
+
+.alert-info-box .box-icon {
+    color: var(--oil-gold);
+    font-size: 1.2rem;
+    margin-top: 2px;
+}
+
+.alert-info-box .box-text {
+    font-family: var(--font-inter);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.8);
+}
+
+/* Lista técnica estilizada */
+.technical-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.technical-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-family: var(--font-inter);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.technical-list .list-arrow {
+    color: var(--oil-gold);
+    font-size: 0.75rem;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+/* --- CAJA DE SOPORTE DE ASUNTOS LEGALES --- */
+.legal-contact-box {
+    background: var(--card-metal);
+    border: 1px solid var(--border-alpha);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.legal-contact-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, var(--oil-gold), transparent);
+}
+
+.contact-box-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1rem;
+}
+
+.contact-box-header i {
+    color: var(--oil-gold);
+    font-size: 1.5rem;
+}
+
+.contact-box-header h3 {
+    font-family: var(--font-rajdhani);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.legal-contact-box p {
+    font-family: var(--font-inter);
+    font-size: 0.92rem;
+    color: var(--mid-gray);
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+}
+
+/* Botón de Acción Industrial */
+.btn-primary-legal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--oil-gold);
+    color: var(--bg-dark);
+    font-family: var(--font-rajdhani);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(229, 169, 60, 0.15);
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-primary-legal:hover {
+    background-color: #f5b94c;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(229, 169, 60, 0.3);
+}
+
+/* --- ADAPTACIÓN MILIMÉTRICA SMARTPHONE --- */
+@media (max-width: 576px) {
+    .legal-header { padding-top: 6rem; }
+    .legal-document { gap: 3rem; }
+    .legal-contact-box { padding: 1.8rem 1.2rem; }
+    .btn-primary-legal { width: 100%; }
+}
+
+/* --- SELECCIÓN DE TEXTO PARA MARCOS LEGALES Y TARJETAS --- */
+.legal-box ::selection, 
+.legal-body ::selection, 
+.info-grid ::selection {
+    background-color: #E5A93C !important; /* Oro Negro Corporativo */
+    color: #030303 !important;            /* Letras Negro Profundo */
+}
+
+.legal-box ::-moz-selection, 
+.legal-body ::-moz-selection, 
+.info-grid ::-moz-selection {
+    background-color: #E5A93C !important;
+    color: #030303 !important;
+}

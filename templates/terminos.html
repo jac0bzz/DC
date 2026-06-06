@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Términos de Servicio | D&C STANDARDS</title>
+    
+    <meta name="description" content="Términos de servicio y condiciones operativas de D&C Standards.">
+    <link rel="icon" type="image/png" href="../static/Logo Blanco.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #030303;
+            --card-metal: linear-gradient(135deg, #1f1f1f 0%, #0d0d0d 100%);
+            --white: #FFFFFF;
+            --oil-gold: #E5A93C; 
+            --mid-gray: #888888;
+            --border-alpha: rgba(255, 255, 255, 0.08);
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Mantenemos el ecosistema sin scroll desbordado y enfocado */
+        body {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            -webkit-font-smoothing: antialiased;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+        }
+
+        /* --- FONDO INDUSTRIAL UNIFICADO --- */
+        .background-wrapper {
+            position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%;
+        }
+        .background-wrapper img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.15) contrast(1.2); 
+        }
+        .vignette {
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at center, rgba(229, 169, 60, 0.05) 0%, rgba(0,0,0,0.95) 80%);
+        }
+
+        /* --- CONTENEDOR PRINCIPAL TIPO PANEL MATE --- */
+        .legal-box {
+            width: 100%;
+            max-width: 650px;
+            background: var(--card-metal);
+            border: 1px solid var(--border-alpha);
+            border-radius: 24px;
+            padding: clamp(1.5rem, 5vw, 3rem);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9), inset 0 1px 2px rgba(255,255,255,0.1);
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        /* Línea de diseño de ingeniería arriba del contenedor */
+        .legal-box::before {
+            content: ''; position: absolute; top: 0; left: 10%; width: 80%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--oil-gold), transparent);
+        }
+
+        /* --- TORRE PETROLERA SVG DE FONDO CORPORATIVO --- */
+        .wireframe-rig {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; color: var(--oil-gold); opacity: 0.03; z-index: 1; pointer-events: none;
+        }
+
+        /* --- ENCABEZADO --- */
+        .legal-header {
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .company-tag {
+            font-size: 0.75rem; font-weight: 800; letter-spacing: 3px; color: var(--oil-gold); text-transform: uppercase;
+            display: block; margin-bottom: 0.5rem;
+        }
+        .legal-header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem); font-weight: 900; letter-spacing: 1px; text-transform: uppercase;
+        }
+        .update-text {
+            font-size: 0.75rem; color: var(--mid-gray); margin-top: 0.5rem; display: block;
+        }
+
+        /* --- TEXTO LEGAL ESTILIZADO --- */
+        .legal-body {
+            display: flex;
+            flex-direction: column;
+            gap: 2.2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .legal-section h2 {
+            font-size: 1.15rem; font-weight: 800; color: var(--oil-gold);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .legal-section h2 i { font-size: 0.9rem; opacity: 0.8; }
+        
+        .legal-section p {
+            font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); line-height: 1.6; font-weight: 300;
+        }
+        .legal-section strong { color: var(--white); font-weight: 600; }
+
+        /* Listas de ingeniería */
+        .legal-section ul {
+            list-style: none; margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0.8rem;
+        }
+        .legal-section ul li {
+            font-size: 0.88rem; color: rgba(255, 255, 255, 0.7); line-height: 1.5;
+            padding-left: 1.5rem; position: relative; font-weight: 300;
+        }
+        .legal-section ul li::before {
+            content: '//'; position: absolute; left: 0; color: var(--oil-gold); font-weight: 700; font-size: 0.8rem;
+        }
+
+        /* Bloque informativo de normativas API */
+        .normative-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem; border-radius: 8px; margin-top: 0.8rem;
+            font-size: 0.85rem; color: var(--mid-gray); line-height: 1.5;
+        }
+        .normative-box strong { color: var(--oil-gold); }
+
+        /* --- LINK DE RETORNO LIMPIO (En lugar del botón amarillo feo) --- */
+        .back-link-container {
+            margin-top: 3rem; text-align: center; width: 100%; z-index: 2;
+        }
+        .back-link {
+            color: var(--mid-gray); text-decoration: none; font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .back-link:hover { color: var(--oil-gold); }
+
+        /* Ajustes responsivos móviles */
+        @media (max-width: 480px) {
+            body { padding: 1.5rem 0.8rem; }
+            .legal-box { padding: 1.8rem 1.2rem; border-radius: 16px; }
+            .legal-section h2 { font-size: 1.05rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-wrapper">
+        <img src="static/Hero.png" alt="Fondo D&C Standards">
+        <div class="vignette"></div>
+    </div>
+
+    <main class="legal-box">
+        
+        <svg viewBox="0 0 300 450" class="wireframe-rig">
+            <g stroke="currentColor" fill="none">
+                <ellipse cx="150" cy="400" rx="90" ry="25" stroke-width="1" opacity="0.3"/>
+                <path d="M 110 330 L 135 60 M 190 330 L 165 60" stroke-width="2"/>
+                <path d="M 113 300 L 187 270 M 187 300 L 113 270" stroke-width="0.8" opacity="0.6"/>
+                <path d="M 116 270 L 184 240 M 184 270 L 116 240" stroke-width="0.8" opacity="0.6"/>
+                <path d="M 119 240 L 181 210 M 181 240 L 119 210" stroke-width="0.8" opacity="0.6"/>
+                <line x1="150" y1="60" x2="150" y2="400" stroke-width="1.5"/>
+            </g>
+        </svg>
+
+        <header class="legal-header">
+            <span class="company-tag">D&C Standards | Legal Department</span>
+            <h1>Términos de Servicio</h1>
+            <span class="update-text"><i class="fa-regular fa-calendar"></i> Última actualización técnica: Mayo 2026</span>
+        </header>
+
+        <div class="legal-body">
+            
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-shield-halved"></i> 1. Introducción y Aceptación</h2>
+                <p>Bienvenido a <strong>D&C Standards</strong>. Al acceder y utilizar este sitio web, así como al solicitar nuestros servicios de ingeniería, diseño avanzado o fabricación metalmecánica pesada, usted acepta estar sujeto a los siguientes Términos de Servicio. Si no está de acuerdo con alguna parte de estos términos, le solicitamos que se abstenga de utilizar nuestros servicios corporativos.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-gears"></i> 2. Servicios Industriales y Cotizaciones</h2>
+                <p>Nuestra plataforma exhibe capacidades operativas y un catálogo de proyectos basados rigurosamente en el cumplimiento de las normativas globales de energía e infraestructura de carga:</p>
+                <div class="normative-box">
+                    Estructuras licenciadas y auditadas bajo estándares: <strong>API 4F, API Q1, ASME y AISC</strong>.
+                </div>
+                <ul>
+                    <li>Las fichas técnicas, renders y modelos presentados en este sitio web son de carácter ilustrativo e informativo preliminar.</li>
+                    <li>Ninguna solicitud a través de nuestros canales automatizados de WhatsApp o correo electrónico constituye un contrato vinculante hasta que se emita y firme una orden de compra oficial o contrato de fabricación bilateral.</li>
+                    <li>Los tiempos de entrega y capacidades de carga específicas se evalúan de manera individual según la ingeniería de detalle de cada proyecto por nuestro taller.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-copyright"></i> 3. Propiedad Intelectual</h2>
+                <p>Todo el contenido visual, textual, esquemas técnicos vectoriales, renders 3D, videos de operaciones en planta y logotipos presentes en este sitio web son propiedad exclusiva de <strong>D&C Standards</strong> y están protegidos por las leyes de derechos de autor de la República de Colombia y tratados internacionales. Queda estrictamente prohibida la reproducción, modificación o distribución sin nuestro consentimiento expreso por escrito.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-triangle-exclamation"></i> 4. Limitación de Responsabilidad</h2>
+                <p>D&C Standards se esfuerza por mantener la información técnica de este sitio lo más precisa y actualizada posible. Sin embargo, no nos hacemos responsables por interpretaciones erróneas, lucro cesante o daños derivados del uso de la información técnica aquí contenida sin la validación y firma previa de nuestro departamento de ingeniería.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-gavel"></i> 5. Ley Aplicable y Jurisdicción</h2>
+                <p>Estos términos se rigen e interpretan de acuerdo con las leyes de la República de Colombia. Cualquier disputa que surja en relación con el uso de este sitio web o la ejecución de nuestros servicios será sometida a la jurisdicción exclusiva de los tribunales competentes en Madrid, Cundinamarca o Bogotá D.C.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fa-solid fa-pen-to-square"></i> 6. Modificaciones</h2>
+                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Las actualizaciones entrarán en vigor inmediatamente después de su publicación en esta página. Es responsabilidad del usuario o cliente revisar periódicamente esta sección legal.</p>
+            </section>
+
+        </div>
+
+        <div class="back-link-container">
+            <a href="../index.html" class="back-link">
+                <i class="fa-solid fa-arrow-left-long"></i> Volver al Inicio
+            </a>
+        </div>
+
+    </main>
+
+</body>
+</html>

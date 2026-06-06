@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Directorio de Personal | D&C STANDARDS</title>
+    
+    <meta name="description" content="Directorio oficial del personal de ingeniería y proyectos de D&C Standards.">
+    <link rel="icon" type="image/png" href="../static/Icono.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #030303;
+            --card-metal: linear-gradient(135deg, #1f1f1f 0%, #0d0d0d 100%);
+            --white: #FFFFFF;
+            --oil-gold: #E5A93C; 
+            --mid-gray: #888888;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            -webkit-font-smoothing: antialiased;
+            padding: 3rem 5vw;
+            overflow-x: hidden;
+        }
+
+        /* --- FONDO INDUSTRIAL UNIFICADO --- */
+        .background-wrapper {
+            position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%;
+        }
+        .background-wrapper img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.25) contrast(1.15) saturate(1.1); 
+        }
+        .vignette {
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at center, rgba(229, 169, 60, 0.05) 0%, rgba(0,0,0,0.95) 80%);
+        }
+
+        /* --- CABECERA --- */
+        .header-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            width: 100%;
+            max-width: 600px;
+        }
+        .company-logo {
+            width: 80px; height: 80px; object-fit: contain; margin-bottom: 1rem;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+        .title-main { font-size: 2.2rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .title-sub { font-size: 0.9rem; color: var(--oil-gold); letter-spacing: 3px; font-weight: 600; text-transform: uppercase; margin-bottom: 2rem; }
+
+        /* --- BARRA DE BÚSQUEDA --- */
+        .search-container {
+            width: 100%; position: relative; display: flex; align-items: center;
+        }
+        .search-input {
+            width: 100%; padding: 1.1rem 1.5rem 1.1rem 3.5rem;
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px; color: var(--white); font-size: 1rem;
+            outline: none; transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        .search-container i {
+            position: absolute; left: 1.3rem; color: var(--mid-gray); font-size: 1.1rem; transition: color 0.3s;
+        }
+        .search-input:focus { border-color: var(--oil-gold); box-shadow: 0 0 15px rgba(229, 169, 60, 0.2); }
+        .search-input:focus + i { color: var(--oil-gold); }
+
+        /* --- GRID DE PERSONAL RESPONSIVE --- */
+        .directory-grid {
+            width: 100%; max-width: 1100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem; margin-top: 1rem;
+        }
+
+        /* --- TARJETA DE CADA EMPLEADO --- */
+        .employee-card {
+            background: var(--card-metal);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px; padding: 2rem 1.5rem;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.08);
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), border-color 0.4s;
+        }
+        .employee-card:hover {
+            transform: translateY(-5px); border-color: rgba(229, 169, 60, 0.4);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.8);
+        }
+
+        /* Contenedor del avatar o foto de perfil */
+        .avatar-box {
+            width: 90px; height: 90px; border-radius: 50%;
+            background: rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.05);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.2rem; position: relative; overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .employee-card:hover .avatar-box { border-color: var(--oil-gold); }
+        .avatar-box i { font-size: 2.5rem; color: var(--mid-gray); transition: color 0.3s; }
+        .employee-card:hover .avatar-box i { color: var(--white); }
+        
+        /* Por si usas fotos reales en el futuro, esta clase las adapta perfecto */
+        .avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .emp-info { flex-grow: 1; margin-bottom: 1.5rem; }
+        .emp-name { font-size: 1.3rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem; }
+        .emp-role { font-size: 0.8rem; color: var(--oil-gold); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+        /* BOTÓN DE ACCESO DIRECTO A SU TARJETA DIGITAL */
+        .btn-view-card {
+            background: rgba(255, 255, 255, 0.03); color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.1); width: 100%; padding: 0.8rem;
+            border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase; display: flex; align-items: center;
+            justify-content: center; gap: 8px; transition: all 0.3s ease;
+        }
+        .btn-view-card:hover {
+            background: var(--oil-gold); color: var(--black);
+            border-color: var(--oil-gold); box-shadow: 0 5px 15px rgba(229, 169, 60, 0.3);
+        }
+
+        /* --- MENSAJE SI NO SE ENCUENTRAN RESULTADOS --- */
+        .no-results {
+            grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--mid-gray);
+            font-size: 1rem; display: none; letter-spacing: 1px;
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 480px) {
+            body { padding: 2rem 4vw; }
+            .title-main { font-size: 1.8rem; }
+            .directory-grid { gap: 1.5rem; }
+            .employee-card { padding: 1.8rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-wrapper">
+        <img src="../static/Hero.png" alt="Fondo O&G">
+        <div class="vignette"></div>
+    </div>
+
+    <header class="header-section">
+        <img src="../static/Logo Blanco.png" alt="Logo D&C Standards" class="company-logo">
+        <h1 class="title-main">D&C Standards</h1>
+        <p class="title-sub">Directorio de Personal Autorizado</p>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar por nombre o cargo..." class="search-input" onkeyup="filterDirectory()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </header>
+
+    <main class="directory-grid" id="directoryGrid">
+        
+        <div class="employee-card">
+            <div class="avatar-box">
+                <i class="fa-solid fa-user-gear"></i>
+            </div>
+            <div class="emp-info">
+                <h2 class="emp-name">Julian Calle</h2>
+                <p class="emp-role">Director de Proyectos</p>
+            </div>
+            <a href="../templates/cards/jcalle.html" class="btn-view-card">
+                <i class="fa-solid fa-id-card"></i> Ver Tarjeta Digital
+            </a>
+        </div>
+
+        <div class="employee-card">
+            <div class="avatar-box">
+                <i class="fa-solid fa-user-gear"></i>
+            </div>
+            <div class="emp-info">
+                <h2 class="emp-name">Cristian Calle</h2>
+                <p class="emp-role">Gerente General</p>
+            </div>
+            <a href="../templates/cards/ccalle.html" class="btn-view-card">
+                <i class="fa-solid fa-id-card"></i> Ver Tarjeta Digital
+            </a>
+        </div>
+
+        <div class="employee-card">
+            <div class="avatar-box">
+                <i class="fa-solid fa-user-gear"></i>
+            </div>
+            <div class="emp-info">
+                <h2 class="emp-name">Karen</h2>
+                <p class="emp-role">..</p>
+            </div>
+            <a href="../templates/cards/karen.html" class="btn-view-card">
+                <i class="fa-solid fa-id-card"></i> Ver Tarjeta Digital
+            </a>
+        </div>
+
+        <div class="no-results" id="noResults">
+            <i class="fa-solid fa-triangle-exclamation" style="color: var(--oil-gold); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+            <p>No se encontró personal que coincida con la búsqueda.</p>
+        </div>
+
+    </main>
+
+    <script>
+        function filterDirectory() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase().trim();
+            const grid = document.getElementById('directoryGrid');
+            const cards = grid.getElementsByClassName('employee-card');
+            const noResults = document.getElementById('noResults');
+            let hasMatches = false;
+
+            for (let i = 0; i < cards.length; i++) {
+                const name = cards[i].getElementsByClassName('emp-name')[0].textContent.toLowerCase();
+                const role = cards[i].getElementsByClassName('emp-role')[0].textContent.toLowerCase();
+                
+                // Si la búsqueda coincide con el nombre o el cargo, se muestra la tarjeta
+                if (name.includes(filter) || role.includes(filter)) {
+                    cards[i].style.display = "flex";
+                    hasMatches = true;
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+
+            // Muestra u oculta el mensaje de "no resultados"
+            if (hasMatches) {
+                noResults.style.display = "none";
+            } else {
+                noResults.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>

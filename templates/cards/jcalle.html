@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tarjeta Digital | D&C STANDARDS</title>
+    
+    <meta name="description" content="Tarjeta de presentación digital oficial de D&C Standards.">
+    <link rel="icon" type="image/png" href="../../static/Icono.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #030303;
+            --card-metal: linear-gradient(135deg, #1f1f1f 0%, #0d0d0d 100%);
+            --white: #FFFFFF;
+            --oil-gold: #E5A93C; 
+            --mid-gray: #888888;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            /* Evita el parpadeo azul molesto al tocar botones en pantallas táctiles */
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        /* BLINDAJE CONTRA SCROLL MULTI-PLATAFORMA */
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden !important;
+            background-color: var(--bg-dark);
+            color: var(--white);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            
+            /* Perspectiva unificada para todos los motores */
+            -webkit-perspective: 2000px;
+            perspective: 2000px;
+        }
+
+        /* --- FONDO INDUSTRIAL --- */
+        .background-wrapper {
+            position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%;
+        }
+        .background-wrapper img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.35) contrast(1.15) saturate(1.1); 
+        }
+        
+        .vignette {
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at center, rgba(229, 169, 60, 0.12) 0%, rgba(0,0,0,0.95) 75%);
+        }
+
+        /* --- CONTENEDOR SEGURO --- */
+        .card-container {
+            width: 92vw;
+            max-width: 350px;
+            height: 76vh; 
+            max-height: 530px; 
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(20px);
+            -webkit-transform: translateY(20px);
+            animation: emergeCard 0.6s var(--ease-out-expo) forwards;
+        }
+
+        @keyframes emergeCard {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- CONTROLLER 3D HARDWARE ACCELERATED --- */
+        .card-flipper {
+            width: 100%; height: 100%;
+            position: relative;
+            
+            /* Forzar aceleración gráfica por GPU en Safari y Android antiguo */
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            
+            -webkit-transition: -webkit-transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: transform;
+        }
+        
+        /* Ejecución del giro compatible */
+        .card-flipper.is-flipped { 
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg); 
+        }
+
+        /* --- CAPAS DE LA TARJETA --- */
+        .card-face {
+            position: absolute; inset: 0;
+            background: var(--card-metal);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 40px 70px rgba(0,0,0,0.95), inset 0 1px 2px rgba(255,255,255,0.15);
+            overflow: hidden;
+            display: flex; flex-direction: column;
+            padding: 2.2rem 1.5rem;
+            
+            /* Ocultamiento absoluto de caras opuestas (Fix definitivo para Webkit/Blink/Gecko) */
+            -webkit-backface-visibility: hidden !important;
+            backface-visibility: hidden !important;
+        }
+
+        .card-face::after {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(135deg, transparent 45%, rgba(255,255,255,0.02) 50%, transparent 55%);
+            pointer-events: none;
+        }
+
+        .wireframe-rig {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; color: var(--oil-gold); opacity: 0.12; z-index: 1; pointer-events: none;
+        }
+
+        /* --- FRONT --- */
+        .card-front { 
+            justify-content: space-between; 
+            align-items: center;
+            z-index: 5;
+        }
+        
+        /* Área de impacto táctil para activar el giro frontal */
+        .front-click-trigger {
+            position: absolute; inset: 0; z-index: 10; cursor: pointer;
+        }
+
+        .front-top {
+            display: flex; justify-content: space-between; align-items: center; width: 100%; z-index: 2;
+        }
+        .front-top .company-title {
+            font-size: 0.8rem; font-weight: 900; letter-spacing: 4px; color: var(--mid-gray);
+        }
+        .front-top i { font-size: 1.2rem; color: var(--oil-gold); opacity: 0.8; }
+
+        .front-center {
+            display: flex; flex-direction: column; align-items: center; z-index: 2; width: 100%;
+        }
+        .front-center .big-logo {
+            width: 120px; height: 120px; object-fit: contain; margin-bottom: 1rem;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+        }
+        .brand-text-main { font-size: 1.9rem; font-weight: 900; letter-spacing: 6px; text-transform: uppercase; }
+        .brand-text-sub { font-size: 0.75rem; color: var(--oil-gold); letter-spacing: 4px; margin-top: 0.4rem; font-weight: 700; text-transform: uppercase; }
+
+        .front-footer { width: 100%; z-index: 2; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; }
+        .front-name { font-size: 1.4rem; font-weight: 800; color: var(--white); text-transform: uppercase; margin-bottom: 0.2rem; }
+        .front-role { font-size: 0.75rem; color: var(--oil-gold); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
+
+        /* --- REVERSO --- */
+        .card-back { 
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg); 
+            justify-content: space-between; 
+            align-items: center; 
+            padding-bottom: 2.5rem !important;
+            z-index: 1;
+        }
+
+        /* Área superior libre de links para tocar y regresar al frente de forma segura */
+        .back-flip-trigger {
+            position: absolute; top: 0; left: 0; width: 100%; height: 55%; z-index: 2; cursor: pointer;
+        }
+
+        .back-header { text-align: center; width: 100%; z-index: 3; pointer-events: none; }
+        .back-name { font-size: 1.25rem; font-weight: 800; text-transform: uppercase; color: var(--white); }
+        .back-role { font-size: 0.75rem; color: var(--mid-gray); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.1rem; }
+
+        .qr-box {
+            background: var(--white); padding: 0.6rem; border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6); z-index: 3; position: relative;
+            margin: 1rem 0; pointer-events: none;
+        }
+        .qr-box::before {
+            content: ''; position: absolute; inset: -3px; border: 1px solid var(--oil-gold); border-radius: 14px; opacity: 0.4;
+        }
+        .qr-code-img { width: 110px; height: 110px; display: block; object-fit: contain; }
+
+        .info-grid {
+            width: 100%; display: flex; flex-direction: column; gap: 0.6rem; z-index: 15;
+        }
+        .info-row {
+            display: flex; align-items: center; gap: 12px; width: 100%;
+            background: rgba(255,255,255,0.02); padding: 0.85rem 1.1rem;
+            border-radius: 10px; border: 1px solid rgba(255,255,255,0.04);
+            text-decoration: none; color: var(--white); transition: all 0.2s ease;
+        }
+        .info-row:hover { border-color: rgba(229, 169, 60, 0.6); background: rgba(229, 169, 60, 0.04); }
+        .info-row i { color: var(--oil-gold); font-size: 0.95rem; width: 20px; text-align: center; }
+        .info-text { font-size: 0.8rem; font-weight: 300; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        /* --- INDICADOR --- */
+        .tap-indicator {
+            margin-top: 1.2rem; color: var(--mid-gray); font-size: 0.75rem; letter-spacing: 2px;
+            display: flex; align-items: center; gap: 8px; font-weight: 600; z-index: 10;
+        }
+        .tap-indicator i { animation: twist 2.5s infinite ease-in-out; color: var(--oil-gold); }
+        @keyframes twist { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(25deg); } }
+
+        @media (max-height: 600px) {
+            .card-container { height: 85vh; }
+            .front-center .big-logo { width: 95px; height: 95px; }
+            .brand-text-main { font-size: 1.5rem; }
+            .qr-code-img { width: 95px; height: 95px; }
+            .card-face { padding: 1.2rem 1rem; }
+            .info-row { padding: 0.5rem 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-wrapper">
+        <img src="../../static/Hero.png" alt="Fondo Industrial Petrolero">
+        <div class="vignette"></div>
+    </div>
+
+    <div class="card-container">
+        <div class="card-flipper" id="cardFlipper">
+            
+            <!-- VISTA FRONTAL -->
+            <div class="card-face card-front" id="frontArea">
+                <div class="front-click-trigger" onclick="executeFlip(true)"></div>
+                
+                <svg viewBox="0 0 300 450" class="wireframe-rig">
+                    <defs>
+                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                    </defs>
+                    <g class="rig-base" stroke="currentColor" fill="none">
+                        <ellipse cx="150" cy="400" rx="90" ry="25" stroke-width="1" opacity="0.3"/>
+                        <ellipse cx="150" cy="400" rx="70" ry="18" stroke-width="1" opacity="0.5"/>
+                        <ellipse cx="150" cy="400" rx="50" ry="12" stroke-width="2" filter="url(#glow)"/>
+                        <path d="M 135 400 L 135 340 M 165 400 L 165 340" stroke-width="2"/>
+                        <rect x="130" y="360" width="40" height="15" stroke-width="1.5"/>
+                    </g>
+                    <g class="rig-derrick" stroke="currentColor" fill="none">
+                        <path d="M 110 330 L 135 60 M 190 330 L 165 60" stroke-width="2.5" filter="url(#glow)"/>
+                        <path d="M 113 300 L 187 270 M 187 300 L 113 270" stroke-width="0.8" opacity="0.6"/>
+                        <path d="M 116 270 L 184 240 M 184 270 L 116 240" stroke-width="0.8" opacity="0.6"/>
+                        <path d="M 119 240 L 181 210 M 181 240 L 119 210" stroke-width="0.8" opacity="0.6"/>
+                        <line x1="113" y1="300" x2="187" y2="300" stroke-width="1.5"/>
+                    </g>
+                    <line x1="150" y1="60" x2="150" y2="400" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+
+                <div class="front-top">
+                    <span class="company-title">PREMIUM IDENTITY</span>
+                    <i class="fa-solid fa-fire-flame-simple"></i>
+                </div>
+
+                <div class="front-center">
+                    <img src="../../static/Logo Blanco.png" alt="Logo D&C" class="big-logo">
+                    <div class="brand-text-main">D&C</div>
+                    <div class="brand-text-sub">STANDARDS</div>
+                </div>
+
+                <div class="front-footer">
+                    <h1 class="front-name">Julian Calle</h1>
+                    <p class="front-role">Director de Proyectos</p>
+                </div>
+            </div>
+
+            <!-- VISTA TRASERA (Universal) -->
+            <div class="card-face card-back" id="backArea">
+                <div class="back-flip-trigger" onclick="executeFlip(false)"></div>
+                
+                <div class="back-header">
+                    <h2 class="back-name">Julian Calle</h2>
+                    <p class="back-role">D&C Standards | Director de Proyectos</p>
+                </div>
+
+                <div class="qr-box">
+                    <img src="../../static/qr/ccalle.png" alt="QR Contacto" class="qr-code-img">
+                </div>
+
+                <div class="info-grid">
+                    <a href="https://wa.link/skadew" target="_blank" rel="noopener noreferrer" class="info-row">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span class="info-text">+57 3022598171</span>
+                    </a>
+                    
+                    <a href="mailto:jcalle@dcstandards.com" class="info-row">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span class="info-text">jcalle@dcstandards.com</span>
+                    </a>
+                    
+                    <a href="https://maps.app.goo.gl/wYgD869F3ePzNnBA9" target="_blank" rel="noopener noreferrer" class="info-row">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span class="info-text">Madrid Cund, Colombia</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="tap-indicator">
+        <i class="fa-solid fa-rotate"></i> TOCA PARA VOLTEAR
+    </div>
+
+    <script>
+        const flipper = document.getElementById('cardFlipper');
+        const frontFace = document.getElementById('frontArea');
+        const backFace = document.getElementById('backArea');
+
+        // Controlador híbrido optimizado para iOS (Safari Webkit) y Android V8
+        function executeFlip(forward) {
+            if (forward) {
+                flipper.classList.add('is-flipped');
+                // Alteración física de capas en pleno tramo de rotación para evitar bugs reflectivos
+                setTimeout(() => {
+                    frontFace.style.display = "none";
+                    backFace.style.zIndex = "20";
+                }, 250);
+            } else {
+                flipper.classList.remove('is-flipped');
+                setTimeout(() => {
+                    frontFace.style.display = "flex";
+                    frontFace.style.zIndex = "20";
+                    backFace.style.zIndex = "1";
+                }, 200);
+            }
+        }
+    </script>
+</body>
+</html>
