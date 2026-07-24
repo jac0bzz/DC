@@ -25,8 +25,8 @@
 
 ## 🧭 Enlace del sitio
 
-🔗 **GitHub Pages:**  
-👉 [https://jac0bzz.github.io/DCStandards/](https://jac0bzz.github.io/DCStandards/)
+🔗 **Dominio:**  
+👉 [https://dcstandards.com.co/](https://dcstandards.com.co/)
 
 ---
 
@@ -53,9 +53,9 @@
 
 ## 👥 Autores
 
-**FULL SERVICES S.A.S**  
+**D&C STANDARDS**  
 Desarrollo y diseño web por **TEDRIX**  
-📧 jforerodev@gmail.com <br>
+📧 Ingeniria@tedrix.co <br>
 🌐 [https://jac0bzz.github.io/DC/](https://jac0bzz.github.io/DC/)
 
 ---
