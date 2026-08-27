@@ -33,10 +33,108 @@ body { background-color: var(--black); color: var(--white); font-family: -apple-
 @keyframes loading { 0% { left: -50%; } 100% { left: 150%; } }
 
 /* --- BOTÓN FLOTANTE --- */
-.floating-wpp { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: rgba(18, 140, 126, 0.2); border: 1px solid rgba(37, 211, 102, 0.5); backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--whatsapp); z-index: 9999; transition: all 0.4s var(--ease-out-expo); box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-decoration: none; }
+/* 1. Tu botón flotante original (Adaptado para <button>) */
+.floating-wpp { 
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
+    width: 60px; 
+    height: 60px; 
+    background: rgba(18, 140, 126, 0.2); 
+    border: 1px solid rgba(37, 211, 102, 0.5); 
+    backdrop-filter: blur(10px); 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: var(--whatsapp); 
+    z-index: 9999; 
+    transition: all 0.4s var(--ease-out-expo); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+    text-decoration: none; 
+    
+    /* Reseteos de botón */
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+}
 .floating-wpp i { font-size: 30px; }
 .floating-wpp:hover { background: var(--whatsapp); color: var(--black); transform: scale(1.1); }
 
+
+/* 2. Diseño del Fondo Oscuro del Modal */
+.wpp-modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    z-index: 9999999; display: flex; justify-content: center; align-items: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease-out-expo);
+}
+.wpp-modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+/* 3. La Caja del Modal */
+.wpp-modal-content {
+    background: #111111; 
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px; width: 90vw; max-width: 420px;
+    padding: 2.5rem 2rem; position: relative;
+    transform: translateY(40px) scale(0.95); opacity: 0;
+    transition: all 0.5s var(--ease-out-expo);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 2px rgba(255,255,255,0.05);
+}
+.wpp-modal-overlay.active .wpp-modal-content {
+    transform: translateY(0) scale(1); opacity: 1;
+}
+
+/* 4. Botón de Cerrar (X) */
+.wpp-close {
+    position: absolute; top: 20px; right: 20px;
+    font-size: 1.5rem; color: var(--mid-gray); cursor: pointer;
+    transition: all 0.3s;
+}
+.wpp-close:hover { color: var(--whatsapp); transform: rotate(90deg); }
+
+/* 5. Cabecera del Modal */
+.wpp-modal-header { text-align: center; margin-bottom: 2rem; }
+.wpp-icon-large { font-size: 3.5rem; color: var(--whatsapp); margin-bottom: 1rem; filter: drop-shadow(0 10px 20px rgba(37,211,102,0.2));}
+.wpp-modal-header h3 { font-size: 1.4rem; font-weight: 900; color: var(--white); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;}
+.wpp-modal-header p { font-size: 0.95rem; color: var(--mid-gray); }
+
+/* 6. Los Botones de Contacto */
+.wpp-options { display: flex; flex-direction: column; gap: 1rem; }
+
+.wpp-option-btn {
+    display: flex; align-items: center; gap: 1.2rem;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px; padding: 1.2rem; text-decoration: none;
+    transition: all 0.3s; cursor: pointer;
+}
+.wpp-option-btn:hover {
+    background: rgba(37, 211, 102, 0.08); border-color: rgba(37, 211, 102, 0.4);
+    transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.wpp-opt-icon {
+    width: 45px; height: 45px; border-radius: 50%;
+    background: rgba(255,255,255,0.05); display: flex; justify-content: center; align-items: center;
+    font-size: 1.2rem; color: var(--mid-gray); transition: all 0.3s; flex-shrink: 0;
+}
+.wpp-option-btn:hover .wpp-opt-icon {
+    background: var(--whatsapp); color: #000; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+}
+
+.wpp-opt-text { display: flex; flex-direction: column; text-align: left;}
+.wpp-opt-text h4 { color: var(--white); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; transition: color 0.3s;}
+.wpp-opt-text span { color: var(--mid-gray); font-size: 0.85rem; letter-spacing: 1px; }
+
+.wpp-option-btn:hover .wpp-opt-text h4 { color: var(--whatsapp); }
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .wpp-modal-content { padding: 2rem 1.5rem; }
+    .wpp-option-btn { padding: 1rem; gap: 1rem; }
+    .wpp-opt-text h4 { font-size: 0.85rem; }
+    .wpp-opt-text span { font-size: 0.75rem; }
+}
 /* --- HEADER & MENU MÓVIL --- */
 .premium-header { position: fixed; top: 0; left: 0; width: 100%; padding: 2rem 5vw; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; z-index: 1000; transition: all 0.4s var(--ease-out-expo); pointer-events: none; }
 .header-top-bar { width: 100%; display: flex; justify-content: center; position: relative; pointer-events: none; z-index: 1001; }

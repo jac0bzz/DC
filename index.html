@@ -53,9 +53,51 @@
         <div class="loader-line"></div>
     </div>
 
-    <a href="https://wa.link/skadew" class="floating-wpp magnetic-btn" target="_blank" rel="noopener noreferrer">
+    <button class="floating-wpp magnetic-btn" id="openWppModal" aria-label="Abrir opciones de WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    </button>
+
+    <!-- 2. EL MODAL MULTICANAL DE WHATSAPP -->
+    <div class="wpp-modal-overlay" id="wppModal">
+        <div class="wpp-modal-content">
+            <span class="wpp-close" id="closeWppModal"><i class="fa-solid fa-xmark"></i></span>
+            
+            <div class="wpp-modal-header">
+                <i class="fa-brands fa-whatsapp wpp-icon-large"></i>
+                <h3>Contacto Directo</h3>
+                <p>Selecciona el área con la que deseas comunicarte:</p>
+            </div>
+            
+            <div class="wpp-options">
+                <!-- Opción 1: Comercial -->
+                <a href="https://wa.link/imt0s1" target="_blank" rel="noopener noreferrer" class="wpp-option-btn">
+                    <div class="wpp-opt-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="wpp-opt-text">
+                        <h4>Comercial y Cotizaciones</h4>
+                        <span>+57 300 3389171</span>
+                    </div>
+                </a>
+
+                <!-- Opción 2: Consultoría / Datos Técnicos -->
+                <a href="https://wa.link/0oxg5a" target="_blank" rel="noopener noreferrer" class="wpp-option-btn">
+                    <div class="wpp-opt-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+                    <div class="wpp-opt-text">
+                        <h4>Consultoría Técnica y Reportes</h4>
+                        <span>+57 302 2598171</span>
+                    </div>
+                </a>
+
+                <!-- Opción 3: Administración / RRHH -->
+                <a href="https://wa.link/pe5l9o" target="_blank" rel="noopener noreferrer" class="wpp-option-btn">
+                    <div class="wpp-opt-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="wpp-opt-text">
+                        <h4>Trabaja con nosotros / Admin</h4>
+                        <span>+57 300 6480222</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <header class="premium-header" id="mainHeader">
         <div class="header-top-bar">

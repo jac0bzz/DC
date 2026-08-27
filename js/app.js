@@ -209,4 +209,33 @@ document.addEventListener("DOMContentLoaded", () => {
         closePanelBtn.addEventListener('click', closeProductPanel);
         panelOverlay.addEventListener('click', closeProductPanel);
     }
+    // 7. MODAL DE WHATSAPP MULTICANAL
+    const btnOpenWpp = document.getElementById('openWppModal');
+    const modalWpp = document.getElementById('wppModal');
+    const btnCloseWpp = document.getElementById('closeWppModal');
+
+    if (btnOpenWpp && modalWpp && btnCloseWpp) {
+        // Abrir Modal
+        btnOpenWpp.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalWpp.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Bloquea el scroll de la página
+        });
+
+        // Función para cerrar
+        const closeWppModal = () => {
+            modalWpp.classList.remove('active');
+            document.body.style.overflow = ''; // Devuelve el scroll
+        };
+
+        // Cerrar al darle a la X
+        btnCloseWpp.addEventListener('click', closeWppModal);
+
+        // Cerrar al darle clic afuera de la caja negra
+        modalWpp.addEventListener('click', (e) => {
+            if (e.target === modalWpp) {
+                closeWppModal();
+            }
+        });
+    }
 });
