@@ -46,9 +46,51 @@
         <div class="loader-line"></div>
     </div>
 
-    <a href="https://wa.link/skadew" class="floating-wpp magnetic-btn" target="_blank" rel="noopener noreferrer">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <button class="floating-wpp magnetic-btn" id="openWppModal" aria-label="Open WhatsApp options">
+    <i class="fa-brands fa-whatsapp"></i>
+    </button>
+
+    <!-- 2. WHATSAPP MULTI-CHANNEL MODAL -->
+    <div class="wpp-modal-overlay" id="wppModal">
+        <div class="wpp-modal-content">
+            <span class="wpp-close" id="closeWppModal"><i class="fa-solid fa-xmark"></i></span>
+            
+            <div class="wpp-modal-header">
+                <i class="fa-brands fa-whatsapp wpp-icon-large"></i>
+                <h3>Direct Contact</h3>
+                <p>Select the department you would like to contact:</p>
+            </div>
+            
+            <div class="wpp-options">
+                <!-- Option 1: Commercial -->
+                <a href="https://wa.link/imt0s1" target="_blank" rel="noopener noreferrer" class="wpp-option-btn">
+                    <div class="wpp-opt-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="wpp-opt-text">
+                        <h4>Sales & Quotes</h4>
+                        <span>+57 300 3389171</span>
+                    </div>
+                </a>
+
+                <!-- Option 2: Consulting / Technical Data -->
+                <a href="https://wa.link/0oxg5a" target="_blank" rel="noopener noreferrer" class="wpp-option-btn">
+                    <div class="wpp-opt-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+                    <div class="wpp-opt-text">
+                        <h4>Technical Consulting & Reports</h4>
+                        <span>+57 302 2598171</span>
+                    </div>
+                </a>
+
+                <!-- Option 3: Administration / HR -->
+                <a href="https://wa.link/q75s3m" target="_blank" rel="noopener noreferrer" class="wpp-option-btn">
+                    <div class="wpp-opt-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="wpp-opt-text">
+                        <h4>Careers / Admin</h4>
+                        <span>+57 300 6480222</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <header class="premium-header" id="mainHeader">
         <div class="header-top-bar">
