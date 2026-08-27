@@ -33,7 +33,6 @@ body { background-color: var(--black); color: var(--white); font-family: -apple-
 @keyframes loading { 0% { left: -50%; } 100% { left: 150%; } }
 
 /* --- BOTÓN FLOTANTE --- */
-/* 1. Tu botón flotante original (Adaptado para <button>) */
 .floating-wpp { 
     position: fixed; 
     bottom: 30px; 
